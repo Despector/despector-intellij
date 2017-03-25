@@ -21,3 +21,7 @@ Then switch back over here and build it with: `./gradlew build`.
 
 Run the plugin in a test IDE with `./gradlew runIde`.
 
+Preview
+-------
+
+![](http://i.imgur.com/Lu5Tijp.gif)

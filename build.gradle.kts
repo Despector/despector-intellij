@@ -56,6 +56,8 @@ intellij {
     pluginName = "Despector Integration"
     updateSinceUntilBuild = false
 
+    setPlugins("java-decompiler")
+
     downloadSources = !CI && downloadIdeaSources.toBoolean()
 
     sandboxDirectory = project.rootDir.canonicalPath + "/.sandbox"

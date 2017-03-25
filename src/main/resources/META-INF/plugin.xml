@@ -14,8 +14,10 @@
     <idea-version since-build="162"/>
 
     <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.java.decompiler</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <psi.classFileDecompiler implementation="com.demonwav.despector.DespectorFileDecompiler" order="last" />
+        <psi.classFileDecompiler implementation="com.demonwav.despector.DespectorFileDecompiler" order="first" />
+        <fileEditorProvider implementation="com.demonwav.despector.DespectorFileEditorProvider" />
     </extensions>
 </idea-plugin>
