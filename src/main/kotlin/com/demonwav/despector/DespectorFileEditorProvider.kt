@@ -23,7 +23,7 @@ class DespectorFileEditorProvider : FileEditorProvider {
 
     override fun getEditorTypeId() = "DESPECTOR_EDITOR_TYPE_ID"
     override fun accept(project: Project, file: VirtualFile) = file.extension == "class"
-    
+
     override fun createEditor(project: Project, file: VirtualFile): FileEditor {
         val first = PsiAwareTextEditorProvider()
         val second = PsiAwareTextEditorProvider()
