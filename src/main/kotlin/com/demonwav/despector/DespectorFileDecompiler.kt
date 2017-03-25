@@ -9,7 +9,6 @@ class DespectorFileDecompiler : ClassFileDecompilers.Light() {
 
     override fun accepts(file: VirtualFile) = file.extension == "class"
 
-    @Throws(CannotDecompileException::class)
     override fun getText(file: VirtualFile): CharSequence {
         try {
             val stream = file.inputStream
