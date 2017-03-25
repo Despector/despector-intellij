@@ -18,15 +18,9 @@ class DespectorFileDecompiler : ClassFileDecompilers.Light() {
                 val firstDir = name[0]
 
                 var dir = file.parent
-
                 while (dir.name != firstDir) {
-                    dir = dir.parent
-
-                    if (dir == null) {
-                        return@decompile null
-                    }
+                    dir = dir.parent ?: return@decompile null
                 }
-
                 // One more time, get it's parent so we can find the class relative to it
                 dir = dir.parent
 
