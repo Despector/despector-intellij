@@ -1,0 +1,21 @@
+<idea-plugin>
+
+    <id>com.demonwav.despector-intellij</id>
+    <name>Despector Integration</name>
+    <vendor>DemonWav</vendor>
+
+    <description><![CDATA[
+        Brings the Despector decompilation tool and AST library to IntelliJ.
+        https://github.com/Deamon5550/Despector
+    ]]></description>
+
+    <change-notes>Initial release.</change-notes>
+
+    <idea-version since-build="162"/>
+
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <psi.classFileDecompiler implementation="com.demonwav.despector.DespectorFileDecompiler" order="last" />
+    </extensions>
+</idea-plugin>
