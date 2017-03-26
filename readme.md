@@ -11,11 +11,7 @@ switching between Despector and Fernflower output, and other stuff that I can co
 Building
 --------
 
-Despector isn't availalbe on Maven yet, so grab it from https://github.com/Deamon5550/Despector
-
-> Build and install it: `./gradlew install`
-
-Then switch back over here and build it with: `./gradlew build`
+Build it using the standard Gradle build command: `./gradlew build`
 
 Run the plugin in a test IDE with `./gradlew runIde`
 

@@ -27,8 +27,11 @@ val runIde: JavaExec by tasks
 val compileKotlin by tasks
 
 repositories {
-    mavenLocal()
     mavenCentral()
+    maven {
+        name = "despector"
+        setUrl("http://repo.voxelgenesis.com/artifactory/decompiler")
+    }
 }
 
 dependencies {
@@ -46,7 +49,7 @@ dependencies {
         isTransitive = false
     }
 
-    compile("org.spongepowered:Despector:0.1.0-SNAPSHOT")
+    compile("org.spongepowered:despector:0.1.0-SNAPSHOT")
 }
 
 intellij {
