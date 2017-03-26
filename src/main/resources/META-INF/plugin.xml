@@ -18,6 +18,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <psi.classFileDecompiler implementation="com.demonwav.despector.DespectorFileDecompiler" order="first" />
-        <fileEditorProvider implementation="com.demonwav.despector.DespectorFileEditorProvider" />
+        <fileEditorProvider implementation="com.demonwav.despector.DecompiledTextEditorProvider" />
     </extensions>
 </idea-plugin>
