@@ -3,7 +3,6 @@ package com.demonwav.despector
 import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.compiled.ClassFileDecompilers
-import org.jetbrains.java.decompiler.IdeaDecompiler
 import org.spongepowered.despector.Despector
 
 class DespectorFileDecompiler : ClassFileDecompilers.Light() {
