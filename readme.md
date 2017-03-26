@@ -12,14 +12,12 @@ Building
 --------
 
 Despector isn't availalbe on Maven yet, so grab it from https://github.com/Deamon5550/Despector
->
-> Build it (right now the tests fail, so omit them): `./gradlew build -x test`.
->
-> And install it: `./gradlew install`.
 
-Then switch back over here and build it with: `./gradlew build`.
+> Build and install it: `./gradlew install`
 
-Run the plugin in a test IDE with `./gradlew runIde`.
+Then switch back over here and build it with: `./gradlew build`
+
+Run the plugin in a test IDE with `./gradlew runIde`
 
 Preview
 -------
