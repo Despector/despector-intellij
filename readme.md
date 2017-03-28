@@ -18,6 +18,6 @@ Run the plugin in a test IDE with `./gradlew runIde`
 Preview
 -------
 
-![](http://i.imgur.com/Lu5Tijp.gif)
+[Tabs](http://i.imgur.com/Lu5Tijp.gif)
 
-![](https://j.gifs.com/g59mW3.gif)
+[Language Chooser](https://j.gifs.com/g59mW3.gif)
