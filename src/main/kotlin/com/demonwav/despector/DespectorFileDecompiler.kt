@@ -4,15 +4,16 @@ import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.compiled.ClassFileDecompilers
 import org.spongepowered.despector.Despector
+import org.spongepowered.despector.Language
 
-class DespectorFileDecompiler : ClassFileDecompilers.Light() {
+class DespectorFileDecompiler(private val language: Language = Language.ANY) : ClassFileDecompilers.Light() {
 
     override fun accepts(file: VirtualFile) = file.extension == "class"
 
     override fun getText(file: VirtualFile): CharSequence {
         try {
             val stream = file.inputStream
-            return BANNER + Despector.decompile(stream) { internalName ->
+            return BANNER + Despector.decompile(stream, language) { internalName ->
                 val name = internalName.split("/").toTypedArray()
                 val firstDir = name[0]
 

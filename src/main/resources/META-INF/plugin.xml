@@ -15,6 +15,7 @@
 
     <depends>com.intellij.modules.java</depends>
     <depends>org.jetbrains.java.decompiler</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <psi.classFileDecompiler implementation="com.demonwav.despector.DespectorFileDecompiler" order="first" />

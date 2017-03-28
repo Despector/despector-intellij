@@ -5,6 +5,7 @@ import com.intellij.ide.highlighter.JavaClassFileType
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.EditorFactory
+import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileEditor.FileEditorLocation
 import com.intellij.openapi.fileEditor.FileEditorPolicy
@@ -16,9 +17,13 @@ import com.intellij.openapi.util.Key
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.components.JBTabbedPane
 import com.intellij.util.PlatformIcons
+import com.intellij.util.ui.GridBag
 import org.jetbrains.java.decompiler.IdeaDecompiler
+import java.awt.BorderLayout
+import java.awt.GridBagLayout
 import java.beans.PropertyChangeListener
 import javax.swing.JComponent
+import javax.swing.JPanel
 import javax.swing.JTabbedPane
 import javax.swing.SwingConstants
 
@@ -32,29 +37,28 @@ class DecompiledTextEditorProvider : FileEditorProvider, DumbAware {
         val first = factory.createEditor(factory.createDocument(file.decompile(true)), project, JavaFileType.INSTANCE, true)
         val second = factory.createEditor(factory.createDocument(file.decompile(false)), project, JavaFileType.INSTANCE, true)
 
-        return TabbedFileEditor(first, second)
+        val toolbar = DespectorToolbar(project, file, first as EditorEx)
+
+        return TabbedFileEditor(toolbar, first, second)
     }
 
     override fun getPolicy() = FileEditorPolicy.HIDE_DEFAULT_EDITOR
 }
 
-private fun VirtualFile.decompile(isDespector: Boolean): CharSequence {
-    return if (isDespector) {
-        DespectorFileDecompiler().getText(this)
-    } else {
-        IdeaDecompiler().getText(this)
-    }
-}
-
-class TabbedFileEditor(firstEditor: Editor, secondEditor: Editor) : FileEditor {
+class TabbedFileEditor(toolbar: DespectorToolbar, firstEditor: Editor, secondEditor: Editor) : FileEditor {
 
     val pane: JBTabbedPane = JBTabbedPane(SwingConstants.TOP, JTabbedPane.SCROLL_TAB_LAYOUT)
 
     init {
-        pane.insertTab("Despector", PlatformIcons.CLASS_ICON, firstEditor.component, "Decompiled by Despector", 0)
+        val panel: JPanel = JPanel(BorderLayout())
+
+        panel.add(toolbar.panel, BorderLayout.NORTH)
+        panel.add(firstEditor.component, BorderLayout.CENTER)
+
+        pane.insertTab("Despector", PlatformIcons.CLASS_ICON, panel, "Decompiled by Despector", 0)
         pane.insertTab("FernFlower", PlatformIcons.CLASS_ICON, secondEditor.component, "Decompile by FernFlower", 1)
 
-        pane.selectedComponent = firstEditor.component
+        pane.selectedComponent = panel
     }
 
     override fun isModified(): Boolean {

@@ -59,7 +59,7 @@ intellij {
     pluginName = "Despector Integration"
     updateSinceUntilBuild = false
 
-    setPlugins("java-decompiler")
+    setPlugins("java-decompiler", "Kotlin")
 
     downloadSources = !CI && downloadIdeaSources.toBoolean()
 
